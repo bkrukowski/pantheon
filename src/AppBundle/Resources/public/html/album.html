@@ -1,0 +1,25 @@
+<div ng-show="isLogged && !isEmpty" ng-include="'album.manage.html'"></div>
+
+<ul id="images-list" class="list lazy-images">
+    <li ng-repeat="(i, image) in images" class="list__item preloader">
+        <a ui-sref="album.photo({albumId: albumId, photoId:image.id})" class="list__item__a">
+            <img
+                    id="photo-{{$index}}"
+                    class="list__item__a__img"
+                    realsrc="{{ image.thumb }}" alt=""
+                    />
+        </a>
+        <span ng-show="isLogged" class="glyphicon glyphicon-remove-sign btn-remove" data-photo-id="{{image.id}}" data-album-id="{{albumId}}"></span>
+    </li>
+</ul>
+
+<div ng-show="isEmpty" class="container separated-block">
+    <div class="alert alert-warning clear-bottom-margin" role="alert">
+        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+        Empty album!
+    </div>
+</div>
+
+<div ng-show="isLogged" ng-include="'album.manage.html'"></div>
+
+<div ng-include="'album.photo.html'"></div>

@@ -1,0 +1,7 @@
+<div class="container separated-block clear-bottom-margin" ng-controller="controller.flashMessages" ng-show="flashMessages.getAll().length">
+    <div class="alert alert-danger" role="alert" ng-repeat="data in flashMessages.getAll() | filter: data">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close" ng-click="flashMessages.remove(data.index)">&times;</a>
+        <h3 class="error-header">{{data.title}}</h3>
+        <p><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> {{data.message}}</p>
+    </div>
+</div>

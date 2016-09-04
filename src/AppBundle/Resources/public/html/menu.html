@@ -1,0 +1,40 @@
+<nav ng-controller="controller.menu" class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button id="btn-collapse-menu" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" ui-sref="home"><span class="glyphicon glyphicon-picture"></span> {{ siteName }}</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown" ng-show="isLogged">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Extra <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a ui-sref="newAlbum"><span class="glyphicon glyphicon-plus"></span> New album</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown" ng-show="isLogged">
+                    <a href="#logout">Logout</a>
+                </li>
+                <li class="dropdown" ng-hide="isLogged">
+                    <a class="dropdown-toggle" href="#" data-toggle="dropdown">Sign In <strong class="caret"></strong></a>
+                    <div class="dropdown-menu" style="padding: 15px;">
+                        <form method="post" action="login" accept-charset="UTF-8">
+                            <input style="margin-bottom: 15px;" type="text" placeholder="Username" id="username" name="_username">
+                            <input style="margin-bottom: 15px;" type="password" placeholder="Password" id="password" name="_password">
+                            <label class="string optional"><input style="float: left; margin-right: 10px;" type="checkbox" name="_remember_me" id="remember-me" value="1"> Remember me</label>
+                            <input class="btn btn-primary btn-block" type="submit" id="sign-in" value="Sign In">
+                        </form>
+                    </div>
+                </li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>

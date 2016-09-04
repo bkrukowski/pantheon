@@ -1,0 +1,35 @@
+<div
+        class="separated-block container"
+        flow-init="{
+            target: BASE_AJAX_PATH + '/photo/uploadOne?albumId=' + albumId,
+            uploadMethod: 'POST',
+            testChunks: false,
+            chunkSize: 1024*1024*1024
+        }"
+        flow-files-submitted="$flow.upload()"
+        flow-file-added="!!{png:1,gif:1,jpg:1,jpeg:1}[$file.getExtension()]"
+        flow-prevent-drop flow-drag-enter="dropClass='drag-over'" flow-drag-leave="dropClass=''"
+    >
+    <div ng-controller="controller.album.uploadPhoto"></div>
+    <div class="drop" flow-drop ng-class="dropClass">
+        <span class="btn btn-default btn-sm" flow-btn>Upload Image</span>
+        <span class="btn btn-default btn-sm hide-on-touch-device" flow-btn flow-directory ng-show="$flow.supportDirectory">Upload Folder of Images</span>
+    </div>
+
+    <div>
+        <div ng-repeat="file in $flow.files" class="gallery-box" ng-show="file.progress() < 1">
+            <span class="title">{{file.name}}</span>
+            <div class="progress progress-striped" ng-class="{active: file.isUploading()}">
+                <div class="progress-bar" role="progressbar"
+                     aria-valuenow="{{file.progress() * 100}}"
+                     aria-valuemin="0"
+                     aria-valuemax="100"
+                     ng-style="{width: (file.progress() * 100) + '%'}">
+                    <span class="sr-only">{{file.progress()}}% Complete</span>
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+
+</div>

@@ -1,0 +1,244 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use AppBundle\Storage\PhotosInterface;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name=Photo::TABLE_NAME)
+ * @ORM\HasLifecycleCallbacks()
+ */
+class Photo
+{
+    const TABLE_NAME = 'photos';
+
+    /**
+     * @ORM\Column(type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $width = 0;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $height = 0;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $albumId;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $originalFilename;
+
+    /**
+     * @ORM\Column(type="string", length=PhotosInterface::TOKEN_LENGTH)
+     */
+    private $token;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $mimeTypeId;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $addedAt;
+
+    /**
+     * @ORM\PrePersist()
+     */
+    public function initDefaultValues()
+    {
+        $this->addedAt = new \DateTime();
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set width
+     *
+     * @param integer $width
+     *
+     * @return Photo
+     */
+    public function setWidth($width)
+    {
+        $this->width = $width;
+
+        return $this;
+    }
+
+    /**
+     * Get width
+     *
+     * @return integer
+     */
+    public function getWidth()
+    {
+        return $this->width;
+    }
+
+    /**
+     * Set height
+     *
+     * @param integer $height
+     *
+     * @return Photo
+     */
+    public function setHeight($height)
+    {
+        $this->height = $height;
+
+        return $this;
+    }
+
+    /**
+     * Get height
+     *
+     * @return integer
+     */
+    public function getHeight()
+    {
+        return $this->height;
+    }
+
+    /**
+     * Set albumId
+     *
+     * @param integer $albumId
+     *
+     * @return Photo
+     */
+    public function setAlbumId($albumId)
+    {
+        $this->albumId = $albumId;
+
+        return $this;
+    }
+
+    /**
+     * Get albumId
+     *
+     * @return integer
+     */
+    public function getAlbumId()
+    {
+        return $this->albumId;
+    }
+
+    /**
+     * Set originalFilename
+     *
+     * @param string $originalFilename
+     *
+     * @return Photo
+     */
+    public function setOriginalFilename($originalFilename)
+    {
+        $this->originalFilename = $originalFilename;
+
+        return $this;
+    }
+
+    /**
+     * Get originalFilename
+     *
+     * @return string
+     */
+    public function getOriginalFilename()
+    {
+        return $this->originalFilename;
+    }
+
+    /**
+     * Set token
+     *
+     * @param string $token
+     *
+     * @return Photo
+     */
+    public function setToken($token)
+    {
+        $this->token = $token;
+
+        return $this;
+    }
+
+    /**
+     * Get token
+     *
+     * @return string
+     */
+    public function getToken()
+    {
+        return $this->token;
+    }
+
+    /**
+     * Set mimeTypeId
+     *
+     * @param integer $mimeTypeId
+     *
+     * @return Photo
+     */
+    public function setMimeTypeId($mimeTypeId)
+    {
+        $this->mimeTypeId = $mimeTypeId;
+
+        return $this;
+    }
+
+    /**
+     * Get mimeTypeId
+     *
+     * @return integer
+     */
+    public function getMimeTypeId()
+    {
+        return $this->mimeTypeId;
+    }
+
+    /**
+     * Set addedAt
+     *
+     * @param \DateTime $addedAt
+     *
+     * @return Photo
+     */
+    public function setAddedAt($addedAt)
+    {
+        $this->addedAt = $addedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get addedAt
+     *
+     * @return \DateTime
+     */
+    public function getAddedAt()
+    {
+        return $this->addedAt;
+    }
+}

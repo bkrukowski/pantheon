@@ -1,0 +1,37 @@
+{% spaceless %}
+<!doctype html>
+<html ng-app="aGallery">
+    <head>
+        <meta charset="UTF-8" />
+        <title ng-bind="title"></title>
+        <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+        {% image '@AppBundle/Resources/public/img/favicon.png' %}
+            <link rel="shortcut icon" href="{{ asset_url }}" />
+        {% endimage %}
+        {% stylesheets
+            '@AppBundle/Resources/public/output/css/main.css'
+            output="bundles/app/output/css/main.css" %}
+            <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}
+    </head>
+
+    <body flow-prevent-drop>
+        <div class="fluid-container">
+            <div ng-include="'menu.html'"></div>
+            <div ng-include="'flashMessages.html'"></div>
+            <div ui-view></div>
+        </div>
+        <div id="loader"></div>
+        {% if __jsVariables is not empty %}
+            <script type="text/javascript">
+                {% for name, value in __jsVariables %}
+                    window.{{ name }} = {{ value|json_encode()|raw }};
+                {% endfor %}
+            </script>
+        {% endif %}
+        {% javascripts '@AppBundle/Resources/public/output/js/main.js' %}
+            <script src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+    </body>
+</html>
+{% endspaceless %}

@@ -1,0 +1,108 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(
+ *     name=Album::TABLE_NAME,
+ *     uniqueConstraints={
+ *         @ORM\UniqueConstraint(name="name", columns={"name"})
+ *     }
+ * )
+ * @UniqueEntity("name")
+ * @ORM\HasLifecycleCallbacks()
+ */
+class Album
+{
+    const TABLE_NAME = 'albums';
+
+    /**
+     * @ORM\Column(type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @ORM\Column(type="string", length=100)
+     * @Assert\Length(min=3, max=100)
+     * @Assert\NotBlank()
+     */
+    private $name;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $addedAt;
+
+    /**
+     * @ORM\PrePersist()
+     */
+    public function initDefaultValues()
+    {
+        $this->addedAt = new \DateTime();
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     *
+     * @return Album
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set addedAt
+     *
+     * @param \DateTime $addedAt
+     *
+     * @return Album
+     */
+    public function setAddedAt($addedAt)
+    {
+        $this->addedAt = $addedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get addedAt
+     *
+     * @return \DateTime
+     */
+    public function getAddedAt()
+    {
+        return $this->addedAt;
+    }
+}

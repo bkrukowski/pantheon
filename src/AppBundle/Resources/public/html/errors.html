@@ -1,0 +1,10 @@
+<div class="container separated-block clear-bottom-margin" ng-controller="controller.errors" ng-show="errors">
+    <div class="alert alert-danger" role="alert" ng-repeat="(key, error) in errors" ng-class="{'clear-bottom-margin': $last}">
+        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+        <span class="sr-only">Error:</span>
+        {{ key }}:
+        <ul>
+            <li ng-repeat="message in error">{{ message }}</li>
+        </ul>
+    </div>
+</div>

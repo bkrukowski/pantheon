@@ -1,0 +1,20 @@
+<ul class="list lazy-images">
+    <li ng-repeat="album in albums" class="list__item relative {{ album.thumb !== '' ? 'preloader' : '' }}">
+        <a ui-sref="album({albumId: album.id})" class="list__item__a">
+            <img
+                    ng-if="album.thumb"
+                    class="list__item__a__img"
+                    alt=""
+                    realsrc="{{ album.thumb }}"
+                    />
+            <span class="list__item__a__icon glyphicon glyphicon-question-sign" aria-hidden="true"></span>
+            <span class="album-caption">{{ album.name }}</span>
+        </a>
+        <span ng-show="isLogged" class="glyphicon glyphicon-remove-sign btn-remove" data-album_id="{{ album.id }}"></span>
+    </li>
+    <li class="list__item" ng-show="isLogged">
+        <a id="add-album" ui-sref="newAlbum" class="list__item__a">
+            <span class="glyphicon glyphicon-plus list__item__a__icon" aria-hidden="true"></span>
+        </a>
+    </li>
+</ul>

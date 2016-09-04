@@ -1,0 +1,9 @@
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
+
+logout:
+    path: /ajax/account/logout
+
+login:
+    path: /ajax/logIn

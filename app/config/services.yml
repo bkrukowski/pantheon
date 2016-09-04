@@ -1,0 +1,31 @@
+# Learn more about services, parameters and containers at
+# http://symfony.com/doc/current/book/service_container.html
+parameters:
+#    parameter_name: value
+
+services:
+    app.security.authentication_handler:
+        class: AppBundle\Auth\AuthenticationHandler
+        public: false
+        arguments:
+            - "@router"
+            - "@session"
+
+    app.gallery_cache:
+        class: AppBundle\Cache\GalleryCache
+        public: true
+        arguments:
+            - '%kernel.cache_dir%'
+
+    app.randomizer:
+        class: AppBundle\Helper\Randomizer
+        public: true
+
+    app.photo_storage:
+        class: AppBundle\Storage\Photos
+        public: true
+        arguments:
+            - '@doctrine'
+            - '@app.randomizer'
+            - '%kernel.root_dir%/../var/images'
+            - '%kernel.cache_dir%/gallery_images'

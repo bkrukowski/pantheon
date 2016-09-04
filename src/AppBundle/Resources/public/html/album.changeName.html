@@ -1,0 +1,12 @@
+<div ng-controller="controller.albumChangeName">
+    <div ng-include="'errors.html'"></div>
+    <form class="form-inline separated-block container">
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-addon"><strong>Current name:</strong> {{album.name}}</div>
+                <input type="text" class="form-control" placeholder="New name..." name="name" required />
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Change name</button>
+    </form>
+</div>

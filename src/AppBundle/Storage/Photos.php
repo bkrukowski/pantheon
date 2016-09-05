@@ -42,7 +42,9 @@ class Photos implements PhotosInterface
         $photo->setToken($this->randomizer->randomString(static::TOKEN_LENGTH));
         $photo->setAlbumId($albumId);
         $photo->setOriginalFilename($file->getClientOriginalName());
-        list($width, $height) = getimagesize($file->getRealPath());
+        $imagick = new \Imagick($file->getRealPath());
+        $width = $imagick->getImageWidth();
+        $height = $imagick->getImageHeight();
         $photo->setWidth($width);
         $photo->setHeight($height);
         $photo->setMimeTypeId(

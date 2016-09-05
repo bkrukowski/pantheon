@@ -39,7 +39,3 @@ security:
                 secret:   '%secret%'
                 lifetime: 604800
                 path:     /
-
-    access_control:
-        # require ROLE_ADMIN for /admin*
-        - { path: ^/admin, roles: ROLE_ADMIN }

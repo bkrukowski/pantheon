@@ -26,6 +26,7 @@ test:
     override:
         - vendor/bin/phpunit
     post:
+        - PHP=$(which php) && PATH=/usr/bin:$PATH && $PHP composer.phar install --no-interaction --no-dev --optimize-autoloader
         - zip -r $CIRCLE_ARTIFACTS/build.zip .
 
 general:

@@ -1,0 +1,11 @@
+machine:
+    php:
+        varsion: 7.0.4
+
+test:
+    post:
+        - zip -r $CIRCLE_ARTIFACTS/build.zip .
+
+general:
+    artifacts:
+        - "$CIRCLE_ARTIFACTS/build.zip"

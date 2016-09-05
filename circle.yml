@@ -10,10 +10,14 @@ dependencies:
         - sudo apt-get install -y nodejs
         - node -v
         - npm -v
-        - export PATH=/usr/bin:$PATH && node -v
-        - export PATH=/usr/bin:$PATH && npm -v
+        - PATH=/usr/bin:$PATH && node -v
+        - PATH=/usr/bin:$PATH && npm -v
+    override:
+        - PATH=/usr/bin:$PATH && composer install --no-interaction
 
 test:
+    override:
+        vendor/bin/phpunit
     post:
         - zip -r $CIRCLE_ARTIFACTS/build.zip .
 

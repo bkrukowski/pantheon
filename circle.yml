@@ -17,7 +17,7 @@ dependencies:
 
 test:
     override:
-        vendor/bin/phpunit
+        - vendor/bin/phpunit
     post:
         - zip -r $CIRCLE_ARTIFACTS/build.zip .
 

@@ -4,6 +4,7 @@ machine:
 
 dependencies:
     pre:
+        - ls -al
         - pwd
         - cd ..
         - pwd

@@ -8,7 +8,11 @@ dependencies:
         - echo "extension=imagick.so" >> /opt/circleci/php/7.0.4/etc/php.ini
         - curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
         - sudo apt-get install -y nodejs
+        - node -v
+        - npm -v
         - export PATH=/usr/bin:$PATH
+        - node -v
+        - npm -v
 
 test:
     post:

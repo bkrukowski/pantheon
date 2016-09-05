@@ -4,8 +4,7 @@ machine:
 
 dependencies:
     pre:
-        - sudo apt-get install checkinstall
-        - cd .. && wget http://pecl.php.net/get/imagick-3.4.1.tgz && tar -xvzf imagick-3.4.1.tgz && cd imagick-3.4.1 && phpize && ./configure && sudo checkinstall && sudo make && sudo make test && sudo make install
+        - cd .. && wget http://pecl.php.net/get/imagick-3.4.1.tgz && tar -xvzf imagick-3.4.1.tgz && cd imagick-3.4.1 && phpize && ./configure && sudo make && sudo make test && sudo make install
         - echo "extension=imagick.so" >> /opt/circleci/php/7.0.4/etc/php.ini
 
 test:

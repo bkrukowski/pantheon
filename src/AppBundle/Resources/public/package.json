@@ -1,5 +1,6 @@
 {
   "name": "bkrukowski.pantheon",
+  "repository": "empty",
   "version": "0.0.0",
   "description": "Simple photo gallery",
   "main": "index.js",

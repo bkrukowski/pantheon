@@ -26,7 +26,7 @@ test:
     override:
         - vendor/bin/phpunit
     post:
-        - PHP=$(which php) && PATH=/usr/bin:$PATH && $PHP composer.phar install --no-interaction --no-dev --optimize-autoloader
+        - PHP=$(which php) && PATH=/usr/bin:$PATH && SYMFONY_ENV=prod && $PHP composer.phar install --no-interaction --no-dev --optimize-autoloader
         - rm -rf web/bundles/app/node_modules
         - zip -r $CIRCLE_ARTIFACTS/build.zip .
 

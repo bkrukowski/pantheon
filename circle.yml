@@ -4,7 +4,9 @@ machine:
 
 dependencies:
     pre:
+        - pwd
         - cd ..
+        - pwd
         - mkdir imagick
         - cd imagick
         - wget http://pecl.php.net/get/imagick-3.4.1.tgz

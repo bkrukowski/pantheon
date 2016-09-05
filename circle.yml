@@ -28,6 +28,7 @@ test:
     post:
         - PHP=$(which php) && PATH=/usr/bin:$PATH && export SYMFONY_ENV=prod && $PHP composer.phar install --no-interaction --no-dev --optimize-autoloader
         - rm -rf web/bundles/app/node_modules
+        - rm app/config/parameters.yml
         - zip -r $CIRCLE_ARTIFACTS/build.zip .
 
 general:

@@ -10,7 +10,8 @@ dependencies:
         - sudo apt-get install -y nodejs
         - node -v
         - npm -v
-        - export PATH=/usr/bin:$PATH
+        - echo "export PATH=/usr/bin:\$PATH" >> ~/.profile
+        - source ~/.bashrc
         - node -v
         - npm -v
 
